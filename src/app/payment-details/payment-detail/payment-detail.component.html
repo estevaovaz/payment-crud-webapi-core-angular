@@ -1,0 +1,60 @@
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+    <input type="hidden" name="Id" [value]="service.formData.Id">
+    <!--NOME DO CARTAO-->
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fas fa-user-circle" [class.green-icon]="NomeCartao.valid"
+                        [class.red-icon]="NomeCartao.invalid && NomeCartao.touched"></i>
+                </div>
+            </div>
+            <input name="NomeCartao" class="form-control" #NomeCartao="ngModel" 
+            [(ngModel)]="service.formData.NomeCartao"
+                placeholder="Nome do Titular do Cartão" required>
+        </div>
+    </div>
+    <!--NUMERO DO CARTAO-->
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="far fa-credit-card" [class.green-icon]="NumeroCartao.valid"
+                        [class.red-icon]="NumeroCartao.invalid && NumeroCartao.touched"></i>
+                </div>
+            </div>
+            <input name="NumeroCartao" class="form-control" #NumeroCartao="ngModel" 
+            [(ngModel)]="service.formData.NumeroCartao"
+                placeholder="9999 9999 9999 9999" required maxlength="16" minlength="16">
+        </div>
+    </div>
+    <!--DATA DO CARTAO-->
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="far fa-calendar-alt" [class.green-icon]="DataExpiracao.valid"
+                        [class.red-icon]="DataExpiracao.invalid && DataExpiracao.touched"></i>
+                </div>
+            </div>
+            <input name="DataExpiracao" class="form-control" #DataExpiracao="ngModel"
+                [(ngModel)]="service.formData.DataExpiracao" maxlength="5" minlength="5" placeholder="MM/YY" required>
+        </div>
+    </div>
+    <!--CVV DO CARTAO-->
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fas fa-key" [class.green-icon]="CVV.valid"
+                        [class.red-icon]="CVV.invalid && CVV.touched"></i>
+                </div>
+            </div>
+            <input type="password" name="CVV" class="form-control" #CVV="ngModel" [(ngModel)]="service.formData.CVV"
+                maxlength="3" minlength="3" placeholder="CVV" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid"><i class="fas fa-database"></i> Submit</button>
+    </div>
+</form>

@@ -1,0 +1,19 @@
+<table class="table table-bordered table-hover">
+    <tr style="background-color: #009688;">
+        <th>Nome do Cartão</th>
+        <th>Número do Cartão</th>
+        <th>Data de Validade</th>
+        <th>CVV</th>
+        <th></th>
+    </tr>
+
+    <tr *ngFor="let pd of service.list">
+        <td (click)="populatedForm(pd)">{{pd.NomeCartao}}</td>
+        <td (click)="populatedForm(pd)">{{pd.NumeroCartao}}</td>
+        <td (click)="populatedForm(pd)">{{pd.DataExpiracao}}</td>
+        <td (click)="populatedForm(pd)">{{pd.CVV}}</td>
+        <td (click)="remover(pd.Id)" style="text-align: center;">
+            <i class="far fa-trash-alt fa-lg text-danger text-center"></i>
+        </td>
+    </tr>
+</table>
